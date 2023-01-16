@@ -80,7 +80,7 @@ app.post('/signin', function(req, res){
 });
 
 app.get('/welcome', function(req,res){
-  const nse = require('./nse.json')
+  const nse = require('./NSE.json')
   const time=[];
   const closedata=[];
   for(var i=0;i<nse.length;i++){
@@ -108,7 +108,7 @@ plotly.plot(data, graphOptions, function (err, msg) {
 });
 
 app.get('/welcome/:stock', function(req, res){
-  var stockName = req.params.stock;
+  var stockName = _.upperCase(req.params.stock);
   var stockN = require('./'+stockName+'.json')
   const time=[];
   const closedata=[];
