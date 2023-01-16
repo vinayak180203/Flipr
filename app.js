@@ -80,7 +80,7 @@ app.post('/signin', function(req, res){
 });
 
 app.get('/welcome', function(req,res){
-  const nse = require('./nse.json')
+  const nse = require('./NSE.json')
   const time=[];
   const closedata=[];
   for(var i=0;i<nse.length;i++){
@@ -111,7 +111,7 @@ const gainColor=nse[nse.length-1].Close-nse[nse.length-2].Close>0?"green":"red";
 });
 
 app.get('/welcome/:stock', function(req, res){
-  var stockName = req.params.stock;
+  var stockName = _.upperCase(req.params.stock);
   var stockN = require('./'+stockName+'.json')
   const time=[];
   const closedata=[];
