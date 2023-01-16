@@ -4,8 +4,9 @@ const mongoose = require('mongoose');
 const ejs = require("ejs");
 var _ = require('lodash');
 const fs  = require('fs');
-const nse=require('./NSE.json')
-var plotly = require('plotly')("Azkairah", "eZnIexyOlWCdttsdf87d")
+
+var plotly = require('plotly')("Azkairah", "eZnIexyOlWCdttsdf87d");
+
 
 // const alert = require('alert');
 // var popupS = require('popupS');
@@ -54,7 +55,7 @@ app.post('/register', (req, res) => {
       });
       user.save()
         .then(() => {
-          res.render('welcome');
+          res.redirect('welcome');
         })
         .catch(error => {
           res.status(400).json({ error });
@@ -79,6 +80,7 @@ app.post('/signin', function(req, res){
 });
 
 app.get('/welcome', function(req,res){
+  const nse = require('./nse.json')
   const time=[];
   const closedata=[];
   for(var i=0;i<nse.length;i++){
@@ -97,13 +99,47 @@ plotly.plot(data, graphOptions, function (err, msg) {
     console.log(msg);
 });
    res.render('welcome',{today_date : nse[nse.length-1].Date,
-                        today_price: nse[nse.length-1].Close,
-                        today_open: nse[nse.length-1].Open,
-                        today_high: nse[nse.length-1].High,
-                        today_low: nse[nse.length-1].Low,
-                        yesterday_close: nse[nse.length-2].Close,
-                        today_gain: nse[nse.length-1].Close-nse[nse.length-2].Close});
-})
+                        today_price:nse[nse.length-1].Close,
+                        today_open:nse[nse.length-1].Open,
+                        today_high:nse[nse.length-1].High,
+                        today_low:nse[nse.length-1].Low,
+                        yesterday_close:nse[nse.length-2].Close,
+                        today_gain:nse[nse.length-1].Close-nse[nse.length-2].Close});
+});
+
+app.get('/welcome/:stock', function(req, res){
+  var stockName = req.params.stock;
+  var stockN = require('./'+stockName+'.json')
+  const time=[];
+  const closedata=[];
+  for(var i=0;i<stockN.length;i++){
+    time.push(stockN[i].Date);
+    closedata.push(stockN[i].Close);
+  }
+  var data = [
+    {
+      x: time,
+      y: closedata,
+      type: "scatter"
+    }
+  ];
+  var graphOptions = {filename: "date-axes", fileopt: "overwrite"};
+plotly.plot(data, graphOptions, function (err, msg) {
+    console.log(msg);
+});
+   res.render('welcome',{today_date : stockN[stockN.length-1].Date,
+                        today_price:stockN[stockN.length-1].Close,
+                        today_open:stockN[stockN.length-1].Open,
+                        today_high:stockN[stockN.length-1].High,
+                        today_low:stockN[stockN.length-1].Low,
+                        yesterday_close:stockN[stockN.length-2].Close,
+                        today_gain:stockN[stockN.length-1].Close-stockN[stockN.length-2].Close});
+});
+
+app.get('/logout', function(req, res, next) {
+  req.session = null;
+  res.redirect('/');
+});
 
 app.listen(3001, () => {
   console.log('Server started on port 3001!');
