@@ -5,6 +5,7 @@ const ejs = require("ejs");
 var _ = require('lodash');
 const fs  = require('fs');
 const nse=require('./NSE.json')
+var plotly = require('plotly')("Azkairah", "eZnIexyOlWCdttsdf87d")
 // const alert = require('alert');
 // var popupS = require('popupS');
 // var swal = require('sweetalert');
@@ -77,7 +78,23 @@ app.post('/signin', function(req, res){
 });
 
 app.get('/welcome', function(req,res){
-  // const dataset = fs.readFile('NSE.json');
+  const time=[];
+  const closedata=[];
+  for(var i=0;i<nse.length;i++){
+    time.push(nse[i].Date);
+    closedata.push(nse[i].Close);
+  }
+  var data = [
+    {
+      x: time,
+      y: closedata,
+      type: "scatter"
+    }
+  ];
+  var graphOptions = {filename: "date-axes", fileopt: "overwrite"};
+plotly.plot(data, graphOptions, function (err, msg) {
+    console.log(msg);
+});
    res.render('welcome',{today_date : nse[nse.length-1].Date, 
                         today_price:nse[nse.length-1].Close, 
                         today_open:nse[nse.length-1].Open,
