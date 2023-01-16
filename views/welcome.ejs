@@ -1,5 +1,6 @@
 <%- include('partials/header'); -%>
 
+<a href="/logout" class="welcome-button welcome-logout">Logout</a>
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Dropdown button
@@ -13,13 +14,13 @@
   </ul>
 </div>
 
-<a href="/welcome">NSE</a>
-<a href="/welcome/bse">BSE</a>
-<h1>Welcome</h1>
+<a class='welcome-button' href="/welcome">NSE</a>
+<a class='welcome-button' href="/welcome/bse">BSE</a>
+<!-- <h1>Welcome</h1> -->
 <div>
-  <h2><%= today_price %></h2>
-  <h3><%= today_gain %></h3>
-  <h4><%= today_date %></h4>
+  <h2 ><%= today_price %></h2>
+  <h3 id="gain"><%= today_gain %> (<%= today_gain_per %>%)</h3>
+  <h4 ><%= today_date %></h4>
   <div>
     <table>
       <tr>
@@ -41,6 +42,7 @@
             <tr>
               <td>Day Low : <%= today_low %></td>
             </tr>
+            
           </table>
         </td>
       </tr>
@@ -49,6 +51,9 @@
   </div>
 </div>
 
-<a href="/logout">Logout</a>
 
-<%- include('partials/footer'); -%>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script>
+  document.getElementById('gain').style.setProperty('color', '<%=gain_color%>');
+  
+</script>

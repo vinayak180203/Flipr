@@ -98,13 +98,16 @@ app.get('/welcome', function(req,res){
 plotly.plot(data, graphOptions, function (err, msg) {
     console.log(msg);
 });
+const gainColor=nse[nse.length-1].Close-nse[nse.length-2].Close>0?"green":"red";
    res.render('welcome',{today_date : nse[nse.length-1].Date,
-                        today_price:nse[nse.length-1].Close,
-                        today_open:nse[nse.length-1].Open,
-                        today_high:nse[nse.length-1].High,
-                        today_low:nse[nse.length-1].Low,
-                        yesterday_close:nse[nse.length-2].Close,
-                        today_gain:nse[nse.length-1].Close-nse[nse.length-2].Close});
+                        today_price:parseFloat(nse[nse.length-1].Close).toFixed(2),
+                        today_open:parseFloat(nse[nse.length-1].Open).toFixed(2),
+                        today_high:parseFloat(nse[nse.length-1].High).toFixed(2),
+                        today_low:parseFloat(nse[nse.length-1].Low).toFixed(2),
+                        yesterday_close:parseFloat(nse[nse.length-2].Close).toFixed(2),
+                        today_gain:parseFloat(nse[nse.length-1].Close-nse[nse.length-2].Close).toFixed(2),
+                        today_gain_per:((parseFloat(nse[nse.length-1].Close-nse[nse.length-2].Close).toFixed(2)/parseFloat(nse[nse.length-1].Close).toFixed(2))*100).toFixed(2),
+                        gain_color:gainColor});
 });
 
 app.get('/welcome/:stock', function(req, res){
@@ -127,16 +130,19 @@ app.get('/welcome/:stock', function(req, res){
 plotly.plot(data, graphOptions, function (err, msg) {
     console.log(msg);
 });
+const gainColor=stockN[stockN.length-1].Close-stockN[stockN.length-2].Close>0?"green":"red";
    res.render('welcome',{today_date : stockN[stockN.length-1].Date,
-                        today_price:stockN[stockN.length-1].Close,
-                        today_open:stockN[stockN.length-1].Open,
-                        today_high:stockN[stockN.length-1].High,
-                        today_low:stockN[stockN.length-1].Low,
-                        yesterday_close:stockN[stockN.length-2].Close,
-                        today_gain:stockN[stockN.length-1].Close-stockN[stockN.length-2].Close});
+                        today_price:parseFloat(stockN[stockN.length-1].Close).toFixed(2),
+                        today_open:parseFloat(stockN[stockN.length-1].Open).toFixed(2),
+                        today_high:parseFloat(stockN[stockN.length-1].High).toFixed(2),
+                        today_low:parseFloat(stockN[stockN.length-1].Low).toFixed(2),
+                        yesterday_close:parseFloat(stockN[stockN.length-2].Close).toFixed(2),
+                        today_gain:parseFloat(stockN[stockN.length-1].Close-stockN[stockN.length-2].Close).toFixed(2),
+                        today_gain_per:((parseFloat(stockN[stockN.length-1].Close-stockN[stockN.length-2].Close).toFixed(2)/parseFloat(stockN[stockN.length-1].Close).toFixed(2))*100).toFixed(2),
+                        gain_color:gainColor});
 });
 
-app.get('/logout', function(req, res, next) {
+app.get('/logout', function(req, res) {
   req.session = null;
   res.redirect('/');
 });

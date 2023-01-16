@@ -151,3 +151,42 @@
     color: white;
     box-shadow: whitesmoke;
 }
+
+.welcome-button{
+    background-color: white;
+    color: black;
+    padding: 1vh 2vw;
+    border-radius: 12px;
+    border: 0.5px solid black;
+    margin-left: 3vw;
+}
+
+.welcome-button:hover{
+    background-color: black;
+    color: white;
+    box-shadow: whitesmoke;
+    text-decoration: none;
+}
+
+.dropdown-toggle{
+    background-color: white;
+    color: black;
+    padding: 1vh 2vw;
+    border-radius: 12px;
+    border: 0.5px solid black;
+    position: relative;
+    left:70vw;  
+    top:3vh;
+}
+
+.welcome-logout{
+    position: relative;
+    top:7vh;
+    left:55vw;
+}
+.welcome-logout:hover{
+    
+    background-color: red;
+    color: white;
+    box-shadow: whitesmoke;
+}
