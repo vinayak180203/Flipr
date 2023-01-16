@@ -93,6 +93,7 @@
 }
 
 .register-form input{
+    text-align: center;
     height: 5vh;
     width:20vw;
     border: 1px solid black;
@@ -133,6 +134,7 @@
 }
 
 .login-form input{
+    text-align: center;
     height: 5vh;
     width:20vw;
     border: 1px solid black;
