@@ -97,12 +97,12 @@ plotly.plot(data, graphOptions, function (err, msg) {
     console.log(msg);
 });
    res.render('welcome',{today_date : nse[nse.length-1].Date,
-                        today_price:nse[nse.length-1].Close,
-                        today_open:nse[nse.length-1].Open,
-                        today_high:nse[nse.length-1].High,
-                        today_low:nse[nse.length-1].Low,
-                        yesterday_close:nse[nse.length-2].Close,
-                        today_gain:nse[nse.length-1].Close-nse[nse.length-2].Close});
+                        today_price: nse[nse.length-1].Close,
+                        today_open: nse[nse.length-1].Open,
+                        today_high: nse[nse.length-1].High,
+                        today_low: nse[nse.length-1].Low,
+                        yesterday_close: nse[nse.length-2].Close,
+                        today_gain: nse[nse.length-1].Close-nse[nse.length-2].Close});
 })
 
 app.listen(3001, () => {

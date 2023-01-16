@@ -1,3 +1,9 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .container-fluid {
     padding-top: 70px;
     padding-bottom: 70px;
@@ -11,6 +17,12 @@
     font-size: 12px;
     letter-spacing: 5px;
 }
+.navbar-brand{
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: black;
+}
+
 .navbar-nav  li a:hover {
     color: #1abc9c !important;
 }
@@ -31,5 +43,111 @@
 .footer p {
 	margin-top: 25px;
 	font-size: 12px;
-  color: #fff;
+  color: rgb(255, 235, 235);
+}
+
+.home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.home-button{
+    margin-top: 2vh;
+    background-color:transparent;
+    color:black;
+    border: 0.5px solid black;
+    border-radius: 5px;
+    padding: 1rem;
+
+}
+
+.home-button:hover{
+    background-color: black;
+    color: white;
+    box-shadow: whitesmoke;
+    text-decoration: none;
+}
+
+.register-form{
+    background-color:ghostwhite;
+    display: flex;
+    flex-direction: column;
+    height:50vh;
+    padding: 5vh 5vw;
+    margin: 10vh 0;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.register-form label{
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.register-form input{
+    height: 5vh;
+    width:20vw;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.register-button{
+    margin-top: 2vh;
+    background-color:transparent;
+    color:black;
+    border: 0.5px solid black;
+    border-radius: 5px;
+    padding: 1rem;
+
+}
+
+.register-button:hover{
+    background-color: black;
+    color: white;
+    box-shadow: whitesmoke;
+}
+.login-form{
+    background-color:ghostwhite;
+    display: flex;
+    flex-direction: column;
+    height:50vh;
+    padding: 5vh 5vw;
+    margin: 10vh 0;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.login-form label{
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.login-form input{
+    height: 5vh;
+    width:20vw;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.login-button{
+    margin-top: 2vh;
+    background-color:transparent;
+    color:black;
+    border: 0.5px solid black;
+    border-radius: 5px;
+    padding: 1rem;
+
+}
+
+.login-button:hover{
+    background-color: black;
+    color: white;
+    box-shadow: whitesmoke;
 }
