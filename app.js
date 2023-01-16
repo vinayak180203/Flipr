@@ -6,6 +6,7 @@ var _ = require('lodash');
 const fs  = require('fs');
 const nse=require('./NSE.json')
 var plotly = require('plotly')("Azkairah", "eZnIexyOlWCdttsdf87d")
+
 // const alert = require('alert');
 // var popupS = require('popupS');
 // var swal = require('sweetalert');
@@ -19,7 +20,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json());
 
 mongoose.set("strictQuery", false);
-mongoose.connect('mongodb://127.0.0.1/userDB');
+mongoose.connect("mongodb+srv://vinayakkesarwani18:gyan26suman@cluster0.rasaaxd.mongodb.net/userDB");
 
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
@@ -53,7 +54,7 @@ app.post('/register', (req, res) => {
       });
       user.save()
         .then(() => {
-          res.render('welcome'); 
+          res.render('welcome');
         })
         .catch(error => {
           res.status(400).json({ error });
@@ -95,8 +96,8 @@ app.get('/welcome', function(req,res){
 plotly.plot(data, graphOptions, function (err, msg) {
     console.log(msg);
 });
-   res.render('welcome',{today_date : nse[nse.length-1].Date, 
-                        today_price:nse[nse.length-1].Close, 
+   res.render('welcome',{today_date : nse[nse.length-1].Date,
+                        today_price:nse[nse.length-1].Close,
                         today_open:nse[nse.length-1].Open,
                         today_high:nse[nse.length-1].High,
                         today_low:nse[nse.length-1].Low,
