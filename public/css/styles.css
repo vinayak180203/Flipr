@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 *{
     margin:0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins';
 }
 
 .container-fluid {
@@ -175,18 +178,47 @@
     border-radius: 12px;
     border: 0.5px solid black;
     position: relative;
-    left:70vw;  
+    left:50vw;  
     top:3vh;
 }
 
 .welcome-logout{
     position: relative;
-    top:7vh;
-    left:55vw;
+    top:6.5vh;
+    left:75vw;
 }
 .welcome-logout:hover{
     
     background-color: red;
     color: white;
     box-shadow: whitesmoke;
+}
+
+.welcome-stock{
+    padding: 5vh 2vw;
+}
+.welcome-title{
+    font-size: 6rem;
+    font-weight: 900;
+}
+
+#gain{
+    font-weight: 600;
+}
+
+.welcome-table tr td{
+    padding: 1vh 0;
+    font-size: 2rem;
+}
+
+.welcome-main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.welcome-date{
+    color: rgb(179, 179, 179);
+    font-size: 1.5rem;
 }
