@@ -25,18 +25,20 @@ mongoose.connect("mongodb+srv://vinayakkesarwani18:gyan26suman@cluster0.rasaaxd.
 
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
-
 const usersSchema = new mongoose.Schema({
   email: String,
-  password: String
+  password: String,
+  name: String
 });
 
 const User = mongoose.model('User',usersSchema);
 
 app.get('/', (req, res) => {
+  res.render('actualhome');
+});
+app.get('/home', function(req, res){
   res.render('home');
 });
-
 
 app.get('/register', function(req, res){
   res.render('register');
@@ -51,7 +53,8 @@ app.post('/register', (req, res) => {
     else{
       const user = new User({
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        name:req.body.name
       });
       user.save()
         .then(() => {
@@ -140,6 +143,7 @@ const gainColor=stockN[stockN.length-1].Close-stockN[stockN.length-2].Close>0?"g
                         today_gain:parseFloat(stockN[stockN.length-1].Close-stockN[stockN.length-2].Close).toFixed(2),
                         today_gain_per:((parseFloat(stockN[stockN.length-1].Close-stockN[stockN.length-2].Close).toFixed(2)/parseFloat(stockN[stockN.length-1].Close).toFixed(2))*100).toFixed(2),
                         gain_color:gainColor});
+    
 });
 
 app.get('/logout', function(req, res) {
