@@ -5,7 +5,7 @@ const ejs = require("ejs");
 var _ = require('lodash');
 const fs  = require('fs');
 
-var plotly = require('plotly')("Azkairah", "eZnIexyOlWCdttsdf87d");
+var plotly = require('plotly')("Tushar1", "fb8TJt1HCGDNJ3C6hLh8");
 
 
 // const alert = require('alert');
@@ -113,7 +113,7 @@ const gainColor=nse[nse.length-1].Close-nse[nse.length-2].Close>0?"green":"red";
                         gain_color:gainColor});
 });
 
-app.get('/welcome/:stock', function(req, res){
+app.get('/welcome/:stock', async function(req, res){
   var stockName = _.upperCase(req.params.stock);
   var stockN = require('./'+stockName+'.json')
   const time=[];
@@ -130,7 +130,7 @@ app.get('/welcome/:stock', function(req, res){
     }
   ];
   var graphOptions = {filename: "date-axes", fileopt: "overwrite"};
-plotly.plot(data, graphOptions, function (err, msg) {
+await plotly.plot(data, graphOptions, function (err, msg) {
     console.log(msg);
 });
 const gainColor=stockN[stockN.length-1].Close-stockN[stockN.length-2].Close>0?"green":"red";
