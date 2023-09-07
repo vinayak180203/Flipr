@@ -185,13 +185,13 @@
     border: 0.5px solid black;
     position: relative;
     left:20vw;  
-    top:3.5vh;
+    top:3.2vh;
 }
 
 .welcome-logout{
     position: relative;
     top:6.5vh;
-    left:75vw;
+    left:65vw;
 }
 .welcome-logout:hover{
     
@@ -301,4 +301,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.stock-graph{
+    margin-top: 5rem;
 }
